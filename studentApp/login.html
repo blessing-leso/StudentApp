@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Login </title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+   <div class="screen">
+
+      <div class="content">
+        <div class="loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="text">Loading...</div>
+      </div>
+    </div>
+   <div class="wrapper">
+      <div class="title">
+         Login Form
+      </div>
+      <form id="loginForm">
+         <div class="field">
+            <input type="text" id="email" required>
+            <label>Email Address</label>
+         </div>
+         <div class="field">
+            <input  type="password" id="password" required>
+            <label>Password</label>
+         </div>
+         <div class="field">
+            <input id="submit" type="submit" value="Login">
+         </div>
+         <div class="signup-link">
+            Not a member? <a href="register.html" id="showRegistration">Register now</a>
+         </div>
+      </form>
+   </div>
+   
+   <script src="script/jquery-3.6.0.min.js"></script>
+   <script src="script/login.js"></script>
+   <script src="script/loader.js"></script>
+</body>
+</html>

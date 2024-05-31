@@ -1,0 +1,37 @@
+#questionnaire{
+    max-width: 700px;
+    margin: auto;
+    width: 100%;
+}
+.submit{
+    padding: 5px 10px; 
+    max-width: 700px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 100px;
+}
+#questionnaire h2{
+    padding: 5px 10px;
+}
+.question{
+    /* background-color: rebeccapurple; */
+    margin-bottom: 5px;
+    padding: 5px 10px;
+}
+
+.question h3{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 10px 15px;
+}
+
+.question ul{
+    background-color: rgb(198, 198, 198);
+    list-style: none;
+    padding: 10px 15px;
+}
+.question ul li{
+    margin-bottom: 10px;
+    font-size: 13px;
+    
+}

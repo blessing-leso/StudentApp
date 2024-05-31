@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire</title>
+  <script src="script/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/questions.css">
+  <link rel="stylesheet" href="css/message.css">
+  <link rel="stylesheet" href="css/screen.css">
+
+</head>
+
+<body>
+
+  <div class="screen">
+
+    <div class="content">
+      <div class="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="text">Loading...</div>
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="heading">Student App</div>
+    <div>
+      <!-- <button class="profile">Profile</button> -->
+      <button class="profile red  logout">Logout</button>
+    </div>
+  </div>
+
+
+
+  <div class="message hidden">
+    <div class="heading">
+      Survey
+    </div>
+    <div class="body">
+      Thank You For Answering The Questions
+    </div>
+    <div style="margin-top: 10px;">
+      <button style="width: 110px;margin: auto;" class="profile  update-survey">Update Survey</button>
+      <button id="delete-survey" style="width: 110px;margin: auto;" class="profile red">Delete Survey</button>
+    </div>
+  </div>
+
+  <div class="questionnaire" id="questionnaire">
+    <h2>Questionnaire</h2>
+  </div>
+
+
+  <div class="submit  sub-questionnaire">
+    <button class="profile" id="submit">Submit</button>
+  </div>
+
+  <script>
+    const selectedAnswers = {};
+    var canUpdate = false;
+    var updateAnswers = [];
+  </script>
+
+  <script src="script/loader.js"></script>
+  <script src="script/questions.js"></script>
+  <script src="script/checkSurveyExist.js"></script>
+  <script src="script/submitSurvey.js"></script>
+  <script src="script/DeleteSurvey.js"></script>
+  <script src="script/UpdateSurvey.js"></script>
+  <script>
+    // Store selected answers
+
+    $(document).ready(function () {
+
+      // Check if email is stored in local storage
+      if (!localStorage.getItem('email')) {
+        // Redirect to login.html and replace the current URL
+        window.location.replace('login.html');
+      }
+
+      $(".logout").click(() => {
+        localStorage.removeItem('email')
+        window.location.replace('login.html');
+      })
+
+
+
+      // Render questions and answers
+      questions.forEach(function (question, index) {
+        const questionHTML = `<div class='question'>
+                            <h3>${question.question}</h3>
+                            <ul class='answers' id="answers_${index}"></ul>
+                          </div>`;
+        $('#questionnaire').append(questionHTML);
+
+        question.answers.forEach(function (answer, ansIndex) {
+          const answerHTML = `<li>
+                            <input type="radio" class='question${index}radio_${ansIndex}' name="answer_${index}" value="${ansIndex}">
+                            <label>${answer}</label>
+                          </li>`;
+          $(`#answers_${index}`).append(answerHTML);
+        });
+      });
+
+
+
+      // Event listener for radio button change
+      $('input[type=radio]').change(function () {
+        const questionIndex = $(this).attr('name').split('_')[1];
+        const answerIndex = $(this).val();
+        selectedAnswers[`question${questionIndex}`] = answerIndex;
+      });
+
+
+    });
+  </script>
+
+</body>
+
+</html>
